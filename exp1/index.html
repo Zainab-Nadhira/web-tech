@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive World Map</title>
+</head>
+<body>
+
+<h1>Interactive World Map</h1>
+<p>Click on a continent to view population statistics and major cities.</p>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+     alt="World Map"
+     usemap="#worldmap">
+
+<map name="worldmap">
+    <area shape="rect" coords="0,80,300,250" href="northamerica.html">
+    <area shape="rect" coords="200,250,350,450" href="southamerica.html">
+    <area shape="rect" coords="350,80,500,180" href="europe.html">
+    <area shape="rect" coords="350,180,520,380" href="africa.html">
+    <area shape="rect" coords="500,80,850,350" href="asia.html">
+    <area shape="rect" coords="750,350,900,450" href="australia.html">
+    <area shape="rect" coords="0,450,900,550" href="antarctica.html">
+</map>
+
+</body>
+</html>
