@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily News Portal</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal CSS (Featured Section Styling) -->
+    <style>
+        .featured {
+            background: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #ff3b3b;
+        }
+
+        .featured h2 {
+            color: #ff3b3b;
+            margin-bottom: 10px;
+        }
+
+        .featured p {
+            font-size: 15px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>📰 Daily Times</h1>
+    </header>
+
+    <!-- Navigation / Sidebar -->
+    <nav class="sidebar">
+        <a href="#">Home</a>
+        <a href="#">World</a>
+        <a href="#">Politics</a>
+        <a href="#">Sports</a>
+        <a href="#">Tech</a>
+        <a href="#">Entertainment</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+
+        <!-- Breaking News (Inline CSS) -->
+        <div style="background:#ff3b3b;color:white;padding:10px;margin-bottom:15px;">
+            🔴 Breaking News: Market hits all-time high!
+        </div>
+
+        <!-- Featured Article -->
+        <section class="featured">
+            <h2>Featured Story</h2>
+            <p>
+                Global leaders meet today to discuss climate change initiatives and future sustainability plans.
+            </p>
+        </section>
+
+        <!-- Article Cards -->
+        <section class="grid">
+            <div class="card">
+                <h3>Tech Innovation</h3>
+                   <img src="https://picsum.photos/400/300?random=1">
+                <div class="excerpt">
+                    AI is transforming industries faster than ever before.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Sports Update</h3>
+                   <img src="https://picsum.photos/400/300?random=2">
+                <div class="excerpt">
+                    The underdogs clinched a stunning victory last night.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Political News</h3>
+                   <img src="https://picsum.photos/400/300?random=3">
+                <div class="excerpt">
+                    New policies aim to boost economic growth.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Entertainment</h3>
+                 <img src="https://picsum.photos/400/300?random=5">
+                <div class="excerpt">
+                    Upcoming movies promise a blockbuster season.
+                </div>
+            </div>
+        </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button>&laquo;</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>&raquo;</button>
+        </div>
+
+    </main>
+
+</body>
+</html>
