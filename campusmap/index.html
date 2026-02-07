@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Campus Map</title>
+    <style>
+        body {
+            background-color: #f2f6ff;
+            font-family: Verdana, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>College Campus Layout</h1>
+<p>Select a department to know more details</p>
+
+<img src="campus.png" alt="Campus Map" usemap="#campusmap" width="800">
+
+
+<map name="campusmap">
+
+    <area shape="rect" coords="50,50,250,200" href="cse.html" alt="CSE">
+    <area shape="rect" coords="300,50,500,200" href="ece.html" alt="ECE">
+    <area shape="rect" coords="550,50,750,200" href="mech.html" alt="Mechanical">
+    <area shape="rect" coords="200,250,450,400" href="library.html" alt="Library">
+
+</map>
+
+</body>
+</html>
