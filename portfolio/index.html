@@ -1,28 +1,284 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Library</title>
-    <style>
-        body {
-            background-color: #eef2f7;
-            font-family: 'Trebuchet MS', sans-serif;
-        }
-        h1 {
-            color: #2e4053;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>My Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+section {
+  padding: 50px;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  height: 100vh;
+}
+
+.hero-left {
+  flex: 1;
+  background: linear-gradient(135deg, #6c5ce7, #0984e3);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-right {
+  flex: 1;
+  background: #ecf0f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.name {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* Project Cards */
+.projects {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 210px;
+  height: 260px;
+  perspective: 1200px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  padding: 15px;
+  text-align: center;
+}
+
+.card-front {
+  background: #6c5ce7;
+  color: white;
+  font-weight: bold;
+}
+
+.card-back {
+  background: #00b894;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* Skills */
+.skill {
+  margin-bottom: 18px;
+}
+
+.bar {
+  background: #dcdde1;
+  height: 18px;
+  border-radius: 10px;
+}
+
+.progress {
+  height: 100%;
+  background: #0984e3;
+  border-radius: 10px;
+}
+
+.html { width: 88%; }
+.css { width: 78%; }
+.design { width: 68%; }
+
+/* Testimonials */
+.carousel {
+  width: 320px;
+  margin: auto;
+  text-align: center;
+}
+
+.carousel input {
+  display: none;
+}
+
+.testimonial {
+  opacity: 0;
+  transition: opacity 0.6s;
+  margin-bottom: 15px;
+}
+
+#one:checked ~ .first,
+#two:checked ~ .second,
+#three:checked ~ .third {
+  opacity: 1;
+}
+
+label {
+  margin: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  background: #0984e3;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Contact Form */
+form {
+  max-width: 420px;
+  margin: auto;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+input:valid {
+  border: 2px solid #2ecc71;
+}
+
+input:invalid {
+  border: 2px solid #e74c3c;
+}
+</style>
 </head>
+
 <body>
 
-<h1>Central Library</h1>
-<p>The central library supports students with books, journals, and digital resources.</p>
+<section class="hero">
+  <div class="hero-left">
+    <h1>Creative Professional</h1>
+    <div class="name">Zainab Nadhira</div>
+  </div>
+  <div class="hero-right">
+    <p>
+      I have a strong foundation in front-end web development using HTML and CSS.
+      I am comfortable creating structured layouts, designing responsive interfaces,
+      and applying styling techniques such as flexbox, animations, and transitions.
+      I focus on building clean, user-friendly web pages.
+    </p>
+  </div>
+</section>
 
-<ul>
-    <li>Collection: Academic and General Books</li>
-    <li>Facilities: Digital Library, Reading Hall</li>
-</ul>
+<section id="projects">
+  <h2>My Projects</h2><br>
+  <div class="projects">
 
-<a href="index.html">← Back to Campus Layout</a>
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          Portfolio Website
+        </div>
+        <div class="card-back">
+          Personal portfolio using HTML and CSS with animations.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          Landing Page
+        </div>
+        <div class="card-back">
+          Responsive landing page layout using flexbox.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          Profile Card
+        </div>
+        <div class="card-back">
+          Styled profile card with hover effects.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Technical Skills</h2><br>
+  <div class="skill">HTML
+    <div class="bar"><div class="progress html"></div></div>
+  </div>
+  <div class="skill">CSS
+    <div class="bar"><div class="progress css"></div></div>
+  </div>
+  <div class="skill">Design
+    <div class="bar"><div class="progress design"></div></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <h2>Client Feedback</h2><br>
+  <div class="carousel">
+    <input type="radio" name="t" id="one" checked>
+    <input type="radio" name="t" id="two">
+    <input type="radio" name="t" id="three">
+
+    <div class="testimonial first">
+      "Delivered a clean and responsive design."
+    </div>
+    <div class="testimonial second">
+      "Professional and easy to work with."
+    </div>
+    <div class="testimonial third">
+      "Good attention to detail in layout."
+    </div>
+
+    <br>
+    <label for="one">1</label>
+    <label for="two">2</label>
+    <label for="three">3</label>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Get in Touch</h2>
+  <form>
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+</section>
 
 </body>
 </html>
