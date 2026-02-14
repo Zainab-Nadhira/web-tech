@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mobile App Feedback Survey</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6fb;
+  padding: 25px;
+}
+
+.container {
+  background: #fff;
+  max-width: 700px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Progress bar */
+.progress-box {
+  height: 18px;
+  background: #ddd;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #0057a3;
+  border-radius: 10px;
+}
+
+button {
+  background: #0057a3;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Mobile App Experience Survey</h2>
+
+<div class="progress-box">
+  <div class="progress-bar" id="progress"></div>
+</div>
+
+<form id="surveyForm">
+
+<!-- Q1 -->
+<div class="question">
+<label>1. How often do you use our app? *</label>
+<input type="radio" name="usage" value="Daily"> Daily<br>
+<input type="radio" name="usage" value="Weekly"> Weekly<br>
+<input type="radio" name="usage" value="Rarely"> Rarely
+<div class="error" id="err1"></div>
+</div>
+
+<!-- Q2 -->
+<div class="question">
+<label>2. Rate the app performance (1–5) *</label>
+<input type="number" id="rating" min="1" max="5">
+<div class="error" id="err2"></div>
+</div>
+
+<!-- Q3 -->
+<div class="question">
+<label>3. Select up to TWO favorite features *</label>
+<input type="checkbox" class="feature"> Speed<br>
+<input type="checkbox" class="feature"> Design<br>
+<input type="checkbox" class="feature"> Notifications<br>
+<input type="checkbox" class="feature"> Security
+<div class="error" id="err3"></div>
+</div>
+
+<!-- Q4 -->
+<div class="question">
+<label>4. Have you faced any bugs? *</label>
+<select id="bugSelect">
+  <option value="">-- Select --</option>
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+<div class="error" id="err4"></div>
+</div>
+
+<!-- Q5 Conditional -->
+<div class="question hidden" id="bugDetails">
+<label>5. Describe the issue *</label>
+<textarea id="bugText" rows="3"></textarea>
+<div class="error" id="err5"></div>
+</div>
+
+<button type="button" onclick="validateForm()">Submit</button>
+
+</form>
+</div>
+
+<script>
+const progress = document.getElementById("progress");
+const bugSelect = document.getElementById("bugSelect");
+const bugDetails = document.getElementById("bugDetails");
+
+/* Conditional display */
+bugSelect.onchange = () => {
+  bugDetails.classList.toggle("hidden", bugSelect.value !== "Yes");
+  updateProgress();
+};
+
+/* Progress calculation */
+function updateProgress() {
+  let count = 0;
+
+  if (document.querySelector('input[name="usage"]:checked')) count++;
+  if (rating.value >= 1 && rating.value <= 5) count++;
+  if (document.querySelectorAll(".feature:checked").length >= 1 &&
+      document.querySelectorAll(".feature:checked").length <= 2) count++;
+  if (bugSelect.value) count++;
+  if (bugSelect.value === "No" || bugText.value.trim()) count++;
+
+  progress.style.width = (count / 5) * 100 + "%";
+}
+
+document.getElementById("surveyForm").onchange = updateProgress;
+document.getElementById("surveyForm").onkeyup = updateProgress;
+
+/* Validation */
+function validateForm() {
+  let valid = true;
+  document.querySelectorAll(".error").forEach(e => e.textContent = "");
+
+  if (!document.querySelector('input[name="usage"]:checked')) {
+    err1.textContent = "Required";
+    valid = false;
+  }
+
+  if (rating.value < 1 || rating.value > 5) {
+    err2.textContent = "Enter value between 1 and 5";
+    valid = false;
+  }
+
+  const features = document.querySelectorAll(".feature:checked").length;
+  if (features < 1 || features > 2) {
+    err3.textContent = "Select 1 or 2 features only";
+    valid = false;
+  }
+
+  if (!bugSelect.value) {
+    err4.textContent = "Required";
+    valid = false;
+  }
+
+  if (bugSelect.value === "Yes" && !bugText.value.trim()) {
+    err5.textContent = "Please describe the issue";
+    valid = false;
+  }
+
+  if (valid) {
+    alert("Feedback submitted successfully!");
+  }
+}
+
+/* Auto-save every 10 seconds with validation */
+setInterval(() => {
+  if (document.querySelector('input[name="usage"]:checked')) {
+    console.log("Auto-saved at:", new Date().toLocaleTimeString());
+  }
+}, 10000);
+</script>
+
+</body>
+</html>
